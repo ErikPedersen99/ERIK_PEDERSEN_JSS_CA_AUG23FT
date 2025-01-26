@@ -20,6 +20,5 @@ Clone repositore from https://github.com/ErikPedersen99/module5.git. Install dep
 
 # Known isues
 Implement a registration system (signup).
-Bugfixing login / logout as well as updating the navbar and meme detail autorisation
-search functionality
-# ERIK_PEDERSEN_JSS_CA_AUG23FT
+Bugfixing login / logout as well as updating the navbar and meme detail authorisation. 
+Search functionality
