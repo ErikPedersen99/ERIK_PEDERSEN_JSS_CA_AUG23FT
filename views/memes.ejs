@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Memes</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+  <link href="../../stylesheets/navbar.css" rel="stylesheet">
+  <link href="../../stylesheets/style.css" rel="stylesheet">
+</head>
+<%- include('./partials/navbar.ejs') %>
+
+<body class="position-relative" data-bs-spy="scroll">
+  <section class="container">
+    <h1>Meme Overview</h1>
+    <table class="table" id="table">
+      <form action="/memes/search" method="get" class="mb-3">
+        <div class="input-group">
+          <input type="text" name="query" class="form-control" placeholder="Search memes by name">
+          <button type="submit" class="btn btn-secondary">Search</button>
+        </div>
+      </form>
+    
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Width x Height</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (cachedMemes && cachedMemes.memes && cachedMemes.memes.length > 0) { %>
+          <% cachedMemes.memes.forEach((meme, index) => { %>
+            <tr>
+              <th scope="row"><%= meme.id %></th>
+              <td><%= meme.name %></td>
+              <td>
+                <a href="<%= meme.url %>" target="_blank">
+                  <img src="<%= meme.url %>" alt="<%= meme.name %>" style="max-width: 100px; max-height: 100px;">
+                </a>
+              </td>
+              <td><%= meme.width %> x <%= meme.height %></td>
+              <td>
+                <a href="/memes/<%= meme.id %>" class="btn btn-primary">Details</a>
+              </td>
+              
+            </tr>
+          <% }); %>
+        <% } else { %>
+          <tr>
+            <td colspan="5">No memes available</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    
+    
+  </section>
+  <%- include('./partials/scripts.ejs') %>
+</body>
+
+</html>
